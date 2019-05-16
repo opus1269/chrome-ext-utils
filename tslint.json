@@ -1,0 +1,41 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "variable-name": [
+      false,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "no-default-export": true,
+    "no-redundant-jsdoc": false,
+    "no-trailing-whitespace": false,
+    "only-arrow-functions": false,
+    "interface-name": true,
+    "ordered-imports": true,
+    "object-literal-sort-keys": false,
+    "object-literal-shorthand": false,
+    "no-empty": false,
+    "new-parens": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-conditional-assignment": true,
+    "no-consecutive-blank-lines": true,
+    "no-console": {
+      "severity": "warning",
+      "options": [
+        "debug",
+        "info",
+        "log",
+        "error",
+        "time",
+        "timeEnd",
+        "trace"
+      ]
+    }
+  }
+}

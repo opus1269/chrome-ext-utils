@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "watch": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "chrome"
+    ],
+    "lib": [
+      "es2018",
+      "dom",
+      "dom.iterable"
+    ]
+  }
+
+}

@@ -1,0 +1,45 @@
+{
+  "name": "chrome-ext-utils",
+  "version": "0.1.0",
+  "description": "Chrome Extension utilities",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opus1269/chrome-ext-utils.git"
+  },
+  "author": {
+    "name": "Michael A. Updike",
+    "email": "igreilly1269@gmail.com"
+  },
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/opus1269/chrome-ext-utils/issues"
+  },
+  "homepage": "https://github.com/opus1269/chrome-ext-utils",
+  "private": false,
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-promise": "^3.6.0",
+    "gulp": "^3.9.1",
+    "gulp-debug": "^3.1.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-noop": "^1.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-tslint": "^8.1.4",
+    "gulp-typedoc": "^2.2.2",
+    "gulp-typescript": "^5.0.1",
+    "gulp-watch": "^4.3.11",
+    "run-sequence": "^2.2.1",
+    "tslint": "^5.16.0",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-external-module-name": "^2.0.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.85",
+    "chrome-promise": "^3.0.4"
+  }
+}
