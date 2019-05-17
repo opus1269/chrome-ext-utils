@@ -20,23 +20,11 @@ const path = {
 };
 const files = {
   ts: `${path.scripts}**/*.ts`,
-  lintdevjs: ['./gulpfile.js'],
+  jsDev: ['./gulpfile.js'],
 };
-
-// command options
-const watchOpts = {
-  verbose: true,
-  base: '.',
-};
-
-// flag for watching
-let isWatch = false;
 
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
 
-const noop = require('gulp-noop');
-const watch = require('gulp-watch');
 const plumber = require('gulp-plumber');
 const eslint = require('gulp-eslint');
 // noinspection JSUnusedLocalSymbols
@@ -47,35 +35,6 @@ const ts = require('gulp-typescript');
 const tsProject = ts.createProject('tsconfig.json');
 const tslint = require('gulp-tslint');
 const typedoc = require('gulp-typedoc');
-
-// to get the current task name
-let currentTaskName = '';
-gulp.Gulp.prototype.__runTask = gulp.Gulp.prototype._runTask;
-gulp.Gulp.prototype._runTask = function(task) {
-  currentTaskName = task.name;
-  this.__runTask(task);
-};
-
-// Default - watch for changes during development
-gulp.task('default', ['incrementalBuild']);
-
-// Incremental Development build
-gulp.task('incrementalBuild', (cb) => {
-  isWatch = true;
-
-  runSequence([
-    '_watch_ts',
-    '_lintdevjs',
-    '_lint',
-  ], cb);
-});
-
-// Production build
-gulp.task('build', (cb) => {
-  isWatch = false;
-
-  runSequence('_lint', '_build_js', 'docs', cb);
-});
 
 // Generate Typedoc
 gulp.task('docs', () => {
@@ -93,10 +52,8 @@ gulp.task('docs', () => {
 
 // Lint development js files
 gulp.task('_lintdevjs', () => {
-  const input = files.lintdevjs;
-  watchOpts.name = currentTaskName;
+  const input = files.jsDev;
   return gulp.src(input, {base: '.'}).
-      pipe(isWatch ? watch(input, watchOpts) : noop()).
       pipe(eslint()).
       pipe(eslint.formatEach()).
       pipe(eslint.failOnError());
@@ -105,9 +62,7 @@ gulp.task('_lintdevjs', () => {
 // Lint TypeScript files
 gulp.task('_lint', () => {
   const input = files.ts;
-  watchOpts.name = currentTaskName;
   return gulp.src(input, {base: '.'}).
-      pipe(isWatch ? watch(input, watchOpts) : noop()).
       pipe(tslint({
         formatter: 'verbose',
       })).
@@ -124,12 +79,6 @@ gulp.task('_ts_dev', () => {
       pipe(gulp.dest(base.dest));
 });
 
-// Watch for changes to TypeScript files
-gulp.task('_watch_ts', ['_ts_dev'], () => {
-  const input = files.ts;
-  gulp.watch(input, ['_ts_dev']);
-});
-
 // Compile the typescript to js in place
 gulp.task('_build_js', () => {
   console.log('compiling ts to js...');
@@ -137,5 +86,27 @@ gulp.task('_build_js', () => {
   const input = files.ts;
   return gulp.src(input, {base: '.'}).
       pipe(tsProject(ts.reporter.longReporter())).js.
-      pipe(gulp.dest(base.dest), noop());
+      pipe(gulp.dest(base.dest));
 });
+
+// Production build
+gulp.task('build', gulp.series('_lint', '_build_js', 'docs', (done) => {
+  done();
+}));
+
+// Incremental Development build
+gulp.task('incrementalBuild', (done) => {
+  // typescript changes
+  gulp.watch(files.ts, gulp.series('_lint'));
+
+  // gulpfile changes
+  gulp.watch(files.jsDev, gulp.series('_lintdevjs'));
+
+  done();
+});
+
+// Default - watch for changes during development
+gulp.task('default', gulp.series('incrementalBuild', (done) => {
+  done();
+}));
+
