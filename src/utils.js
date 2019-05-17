@@ -2,7 +2,7 @@
  * Utility methods
  *
  * If you want to log events, errors, etc. locally during development,
- * save boolean key named ```isDevelopmentBuild: true``` to local storage
+ * save a boolean key/value pair: ```isDevelopmentBuild: true``` to local storage
  *
  * @module chrome/utils
  */
