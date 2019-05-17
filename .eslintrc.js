@@ -24,7 +24,8 @@ module.exports = {
     'chrome': true,
     'ChromePromise': true,
     'ga': true,
-    'require': true
+    'require': true,
+    'exports': true,
   },
 
   'rules': {
@@ -34,30 +35,17 @@ module.exports = {
       'error', {
         'code': 80,
         'tabWidth': 2,
-        'ignoreComments': true,
-        'ignoreStrings': true,
-        'ignoreTemplateLiterals': true,
       }],
     'eqeqeq': ['error', 'always'],
     'no-var': 'warn',
-    'no-console': ['warn', {'allow': ['error']}],
+    'no-console': 'off',
     'no-unused-vars': 'warn',
     'comma-dangle': ['warn', 'always-multiline'],
     'no-trailing-spaces': 'off',
     'padded-blocks': 'off',
-    'require-jsdoc': 'warn',
-    'new-cap': ['error', {'capIsNewExceptions': ['Polymer', 'If']}],
+    'require-jsdoc': 'off',
     'quotes': ['error', 'single'],
     'quote-props': ['error', 'consistent'],
     'prefer-rest-params': 'off',
-    'valid-jsdoc': [
-      'error', {
-        'requireParamDescription': false,
-        'requireReturnDescription': false,
-        'requireReturn': false,
-        'prefer': {
-          'return': 'returns',
-        },
-      }],
   },
 };
