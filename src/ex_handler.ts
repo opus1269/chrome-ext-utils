@@ -1,6 +1,17 @@
 /**
  * Global exception handlers
  *
+ * Listen for unhandledrejection event to catch uncaught promises for logging purposes.<br />
+ * This is a Chrome only thing.
+ *
+ * Replace the window global error handler for logging purposes.
+ *
+ * Include the module in each .html file:
+ *
+ * ```html
+ * script type="module" src="../node_modules/@opus1269/chrome-ext-utils/src/ex_handler.js"></script>
+ * ```
+ *
  * @module chrome/ex_handler
  */
 
@@ -28,7 +39,7 @@ window.addEventListener('unhandledrejection', function(ev: PromiseRejectionEvent
   }
 });
 
-// Replace global error handler for logging purposes.
+// Replace global error handler for logging purposes
 if (typeof window.onerror === 'object') {
   // global error handler
   window.onerror = function(message, url, line, col, errObject) {
