@@ -6,7 +6,6 @@
  *
  * @module chrome/utils
  */
-
 /** */
 /*
  * Copyright (c) 2015-2019, Michael A. Updike All rights reserved.
