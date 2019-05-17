@@ -1,6 +1,6 @@
 {
   "name": "chrome-ext-utils",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Chrome Extension utilities",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "url": "https://github.com/opus1269/chrome-ext-utils/issues"
   },
   "homepage": "https://github.com/opus1269/chrome-ext-utils",
-  "private": false,
+  "private": true,
   "devDependencies": {
     "eslint": "^4.10.0",
     "eslint-config-google": "^0.9.1",
@@ -27,7 +27,6 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-noop": "^1.0.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-replace": "^1.0.0",
     "gulp-tslint": "^8.1.4",
     "gulp-typedoc": "^2.2.2",
     "gulp-typescript": "^5.0.1",

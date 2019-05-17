@@ -4,7 +4,6 @@
  *  https://opensource.org/licenses/BSD-3-Clause
  *  https://github.com/opus1269/screensaver/blob/master/LICENSE.md
  */
-/* tslint:disable */
 'use strict';
 /* eslint no-console: 0 */
 /* eslint require-jsdoc: 0 */
@@ -14,17 +13,15 @@ const base = {
   app: 'chrome-ext-utils',
   src: 'src/',
   docs: 'docs/',
+  dest: './',
 };
 const path = {
   scripts: `${base.src}`,
 };
 const files = {
-  scripts: `${path.scripts}**/*.js`,
-  scripts_ts: `${path.scripts}**/*.ts`,
+  ts: `${path.scripts}**/*.ts`,
+  lintdevjs: ['./gulpfile.js'],
 };
-files.tmpJs = [files.scripts];
-files.ts = [files.scripts_ts];
-files.lintdevjs = ['./gulpfile.js'];
 
 // command options
 const watchOpts = {
@@ -34,8 +31,6 @@ const watchOpts = {
 
 // flag for watching
 let isWatch = false;
-// flag for production release build
-let isProd = false;
 
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
@@ -43,19 +38,15 @@ const runSequence = require('run-sequence');
 const noop = require('gulp-noop');
 const watch = require('gulp-watch');
 const plumber = require('gulp-plumber');
-const replace = require('gulp-replace');
 const eslint = require('gulp-eslint');
-// const debug = require('gulp-debug'); // eslint-disable-line no-unused-vars
+// noinspection JSUnusedLocalSymbols
+const debug = require('gulp-debug'); // eslint-disable-line no-unused-vars
 
 // TypeScript
 const ts = require('gulp-typescript');
 const tsProject = ts.createProject('tsconfig.json');
 const tslint = require('gulp-tslint');
 const typedoc = require('gulp-typedoc');
-
-// code replacement
-const SRCH_DEBUG = 'const _DEBUG = false';
-const REP_DEBUG = 'const _DEBUG = true';
 
 // to get the current task name
 let currentTaskName = '';
@@ -70,7 +61,6 @@ gulp.task('default', ['incrementalBuild']);
 
 // Incremental Development build
 gulp.task('incrementalBuild', (cb) => {
-  isProd = false;
   isWatch = true;
 
   runSequence([
@@ -80,27 +70,15 @@ gulp.task('incrementalBuild', (cb) => {
   ], cb);
 });
 
-// Development build
-gulp.task('buildDev', (cb) => {
-  isProd = false;
-  isWatch = false;
-
-  runSequence('_lint', '_build_js', cb);
-});
-
-
 // Production build
-gulp.task('buildProd', (cb) => {
-  isProd = true;
+gulp.task('build', (cb) => {
   isWatch = false;
-  base.dist = '../build/prod/app';
 
-  runSequence('_build_js', 'docs', cb);
+  runSequence('_lint', '_build_js', 'docs', cb);
 });
 
 // Generate Typedoc
 gulp.task('docs', () => {
-
   const input = files.ts;
   return gulp.src(input).pipe(typedoc({
     mode: 'modules',
@@ -143,8 +121,7 @@ gulp.task('_ts_dev', () => {
   return gulp.src(input, {base: '.'}).
       pipe(tsProject(ts.reporter.longReporter())).
       on('error', () => {/* Ignore compiler errors */}).
-      pipe((!isProd ? replace(SRCH_DEBUG, REP_DEBUG) : noop())).
-      pipe(gulp.dest(base.dev));
+      pipe(gulp.dest(base.dest));
 });
 
 // Watch for changes to TypeScript files
@@ -160,6 +137,5 @@ gulp.task('_build_js', () => {
   const input = files.ts;
   return gulp.src(input, {base: '.'}).
       pipe(tsProject(ts.reporter.longReporter())).js.
-      pipe((!isProd ? replace(SRCH_DEBUG, REP_DEBUG) : noop())).
-      pipe(gulp.dest(base.src), noop());
+      pipe(gulp.dest(base.dest), noop());
 });
