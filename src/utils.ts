@@ -1,6 +1,10 @@
 /**
  * Utility methods
  *
+ * @remarks
+ * If you want to log events, errors, etc. locally during development,
+ * save a true boolean key named isDevelopmentBuild to local storage
+ *
  * @module chrome/utils
  */
 
@@ -14,21 +18,13 @@
  */
 
 import * as ChromeLocale from './locales.js';
+import * as ChromeStorage from './storage.js';
 
 declare var ChromePromise: any;
 const chromep = new ChromePromise();
 
-/**
- * Set to true if development build
- *
- * @remarks
- *
- * Do not change name as it is processed during build
- */
-const _DEBUG = false;
-
 /** True if development build */
-export const DEBUG = _DEBUG;
+export const DEBUG = ChromeStorage.getBool('isDevelopmentBuild', false);
 
 /** Get the extension's name
  *
@@ -157,6 +153,7 @@ export function isWhiteSpace(str: string | null | undefined) {
  * @returns A pseudo-random string
  */
 export function getRandomString(len = 8) {
+  // noinspection SpellCheckingInspection
   const POSS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let text = '';
   for (let i = 0; i < len; i++) {
