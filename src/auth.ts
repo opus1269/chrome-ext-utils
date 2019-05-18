@@ -14,7 +14,7 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeUtils from './utils.js';
+import * as ChromeUtils from './utils';
 
 declare var ChromePromise: any;
 const chromep = new ChromePromise();

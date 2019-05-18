@@ -10,7 +10,7 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
-import * as ChromeGA from './analytics.js';
+import * as ChromeGA from './analytics';
 /**
  * Parse json, with exception handling
  *

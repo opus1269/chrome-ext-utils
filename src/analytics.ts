@@ -13,8 +13,8 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeJSON from './json.js';
-import * as ChromeUtils from './utils.js';
+import * as ChromeJSON from './json';
+import * as ChromeUtils from './utils';
 
 declare var ga: any;
 

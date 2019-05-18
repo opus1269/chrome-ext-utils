@@ -10,29 +10,19 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
-import * as ChromeGA from './analytics.js';
-import * as ChromeAuth from './auth.js';
-import * as ChromeLocale from './locales.js';
-import * as ChromeUtils from './utils.js';
-/**
- * Authorization header
- */
+import * as ChromeGA from './analytics';
+import * as ChromeAuth from './auth';
+import * as ChromeLocale from './locales';
+import * as ChromeUtils from './utils';
+/** Authorization header */
 const AUTH_HEADER = 'Authorization';
-/**
- * Bearer parameter for authorized call
- */
+/** Bearer parameter for authorized call */
 const BEARER = 'Bearer';
-/**
- * Max retries on 500 errors
- */
+/** Max retries on 500 errors */
 const MAX_RETRIES = 4;
-/**
- * Delay multiplier for exponential back-off
- */
+/** Delay multiplier for exponential back-off */
 const DELAY = 1000;
-/**
- * Configuration object
- */
+/** Configuration object */
 export const CONFIG = {
     checkConnection: true,
     isAuth: false,
@@ -244,7 +234,6 @@ async function doFetch(url, opts, conf, attempt) {
  * @returns response from server
  */
 async function doIt(url, opts, conf) {
-    conf = conf || CONFIG;
     if (conf.checkConnection) {
         ChromeUtils.checkNetworkConnection();
     }

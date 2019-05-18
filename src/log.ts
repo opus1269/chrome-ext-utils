@@ -13,10 +13,10 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeGA from './analytics.js';
-import {ChromeLastError} from './last_error.js';
-import * as ChromeLocale from './locales.js';
-import * as ChromeUtils from './utils.js';
+import * as ChromeGA from './analytics';
+import {ChromeLastError} from './last_error';
+import * as ChromeLocale from './locales';
+import * as ChromeUtils from './utils';
 
 /**
  * Log an error

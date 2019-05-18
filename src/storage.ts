@@ -13,9 +13,9 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeGA from './analytics.js';
-import * as ChromeJSON from './json.js';
-import * as ChromeMsg from './msg.js';
+import * as ChromeGA from './analytics';
+import * as ChromeJSON from './json';
+import * as ChromeMsg from './msg';
 
 declare var ChromePromise: any;
 

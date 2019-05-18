@@ -13,14 +13,12 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeGA from './analytics.js';
-import * as ChromeAuth from './auth.js';
-import * as ChromeLocale from './locales.js';
-import * as ChromeUtils from './utils.js';
+import * as ChromeGA from './analytics';
+import * as ChromeAuth from './auth';
+import * as ChromeLocale from './locales';
+import * as ChromeUtils from './utils';
 
-/**
- * Http configuration
- */
+/** Http configuration */
 export interface IConfig {
   /** check for no internet connection */
   checkConnection: boolean;
@@ -42,29 +40,19 @@ export interface IConfig {
   json: boolean;
 }
 
-/**
- * Authorization header
- */
+/** Authorization header */
 const AUTH_HEADER = 'Authorization';
 
-/**
- * Bearer parameter for authorized call
- */
+/** Bearer parameter for authorized call */
 const BEARER = 'Bearer';
 
-/**
- * Max retries on 500 errors
- */
+/** Max retries on 500 errors */
 const MAX_RETRIES = 4;
 
-/**
- * Delay multiplier for exponential back-off
- */
+/** Delay multiplier for exponential back-off */
 const DELAY = 1000;
 
-/**
- * Configuration object
- */
+/** Configuration object */
 export const CONFIG: IConfig = {
   checkConnection: true,
   isAuth: false,
@@ -293,8 +281,6 @@ async function doFetch(url: string, opts: RequestInit, conf: IConfig, attempt: n
  * @returns response from server
  */
 async function doIt(url: string, opts: RequestInit, conf: IConfig) {
-  conf = conf || CONFIG;
-
   if (conf.checkConnection) {
     ChromeUtils.checkNetworkConnection();
   }

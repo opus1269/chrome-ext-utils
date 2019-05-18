@@ -21,7 +21,7 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
-import * as ChromeLog from './log.js';
+import * as ChromeLog from './log';
 // Listen for uncaught promises for logging purposes. - Chrome only
 window.addEventListener('unhandledrejection', function (ev) {
     if (ChromeLog && ev) {

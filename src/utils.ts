@@ -16,8 +16,8 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeLocale from './locales.js';
-import * as ChromeStorage from './storage.js';
+import * as ChromeLocale from './locales';
+import * as ChromeStorage from './storage';
 
 declare var ChromePromise: any;
 const chromep = new ChromePromise();
