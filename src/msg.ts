@@ -17,7 +17,8 @@
 
 import * as ChromeGA from './analytics';
 
-declare var ChromePromise: any;
+import ChromePromise from 'chrome-promise/chrome-promise'; // removed in all build's - stupid typescript
+const chromep = new ChromePromise();
 
 /** A Chrome message */
 export interface IMsgType {
@@ -77,9 +78,9 @@ type Listener = ((request: IMsgType, sender: chrome.runtime.MessageSender, respo
  * @returns Something that is json
  */
 export async function send(type: IMsgType) {
-  const chromep = new ChromePromise();
   try {
-    return await chromep.runtime.sendMessage(type);
+    // TODO remove type cast if added
+    return await (chromep.runtime as any).sendMessage(type) as any;
   } catch (err) {
     if (err.message && !err.message.includes('port closed') && !err.message.includes('Receiving end does not exist')) {
       const msg = `type: ${type.message}, ${err.message}`;

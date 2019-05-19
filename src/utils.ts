@@ -19,7 +19,7 @@
 import * as ChromeLocale from './locales';
 import * as ChromeStorage from './storage';
 
-declare var ChromePromise: any;
+import ChromePromise from 'chrome-promise/chrome-promise'; // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 
 /** True if development build */

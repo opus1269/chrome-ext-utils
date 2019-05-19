@@ -190,7 +190,7 @@ async function getAuthToken(isAuth: boolean, interactive: boolean) {
     }
   } else {
     // non-authorization branch
-    return;
+    return null;
   }
 }
 

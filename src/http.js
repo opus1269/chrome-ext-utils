@@ -154,7 +154,7 @@ async function getAuthToken(isAuth, interactive) {
     }
     else {
         // non-authorization branch
-        return;
+        return null;
     }
 }
 /**

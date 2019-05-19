@@ -3,6 +3,14 @@
  *
  * @module chrome/last_error
  */
+/** */
+/*
+ * Copyright (c) 2015-2019, Michael A. Updike All rights reserved.
+ * Licensed under the BSD-3-Clause
+ * https://opensource.org/licenses/BSD-3-Clause
+ * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
+ */
+ // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /**
  * A custom error that can be persisted

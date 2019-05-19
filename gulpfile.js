@@ -19,9 +19,15 @@ const files = {
   js: [`${base.app}gulpfile.js`],
 };
 
+// code replacement
+// stupid typescript doesn't handle ES6 modules correctly w/o a build tool
+const SRCH_CP = 'import ChromePromise from \'chrome-promise/chrome-promise\';';
+const REP_CP = '';
+
 // plugins
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
+const replace = require('gulp-replace');
 const eslint = require('gulp-eslint');
 const ts = require('gulp-typescript');
 const tsProject = ts.createProject('tsconfig.json');
@@ -55,6 +61,7 @@ function tsCompile() {
   const input = files.ts;
   return gulp.src(input, {base: '.'}).
       pipe(tsProject(ts.reporter.longReporter())).js.
+      pipe(replace(SRCH_CP, REP_CP)).
       pipe(gulp.dest(base.dest));
 }
 

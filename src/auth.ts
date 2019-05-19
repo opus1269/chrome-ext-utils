@@ -16,7 +16,7 @@
 
 import * as ChromeUtils from './utils';
 
-declare var ChromePromise: any;
+import ChromePromise from 'chrome-promise/chrome-promise'; // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 
 /**

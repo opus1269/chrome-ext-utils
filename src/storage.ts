@@ -17,7 +17,8 @@ import * as ChromeGA from './analytics';
 import * as ChromeJSON from './json';
 import * as ChromeMsg from './msg';
 
-declare var ChromePromise: any;
+import ChromePromise from 'chrome-promise/chrome-promise'; // removed in all build's - stupid typescript
+const chromep = new ChromePromise();
 
 /**
  * Get a json parsed value from localStorage
@@ -132,7 +133,6 @@ export function safeSet(key: string, value: any, keyBool?: string) {
  */
 export async function asyncGet(key: string, def?: object | []) {
   let value = null;
-  const chromep = new ChromePromise();
   try {
     const res = await chromep.storage.local.get([key]);
     value = res[key];
@@ -166,7 +166,6 @@ export async function asyncGet(key: string, def?: object | []) {
 export async function asyncSet(key: string, value: object | [] | number, keyBool?: string) {
   // TODO what about keyBool?
   let ret = true;
-  const chromep = new ChromePromise();
   const obj = {
     [key]: value,
   };

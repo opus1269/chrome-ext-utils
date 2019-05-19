@@ -13,6 +13,8 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 import * as ChromeGA from './analytics';
+ // removed in all build's - stupid typescript
+const chromep = new ChromePromise();
 /**
  * Chrome Messages
  */
@@ -44,8 +46,8 @@ export const TYPE = {
  * @returns Something that is json
  */
 export async function send(type) {
-    const chromep = new ChromePromise();
     try {
+        // TODO remove type cast if added
         return await chromep.runtime.sendMessage(type);
     }
     catch (err) {
