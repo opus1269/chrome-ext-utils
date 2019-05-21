@@ -13,7 +13,7 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeGA from './analytics';
+import * as ChromeGA from './analytics.js';
 
 /**
  * Parse json, with exception handling

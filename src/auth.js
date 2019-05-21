@@ -11,7 +11,7 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
-import * as ChromeUtils from './utils';
+import * as ChromeUtils from './utils.js';
  // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /**

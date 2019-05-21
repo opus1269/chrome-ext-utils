@@ -10,10 +10,10 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
-import * as ChromeGA from './analytics';
-import * as ChromeAuth from './auth';
-import * as ChromeLocale from './locales';
-import * as ChromeUtils from './utils';
+import * as ChromeGA from './analytics.js';
+import * as ChromeAuth from './auth.js';
+import * as ChromeLocale from './locales.js';
+import * as ChromeUtils from './utils.js';
 /** Authorization header */
 const AUTH_HEADER = 'Authorization';
 /** Bearer parameter for authorized call */

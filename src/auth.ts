@@ -14,7 +14,7 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 
-import * as ChromeUtils from './utils';
+import * as ChromeUtils from './utils.js';
 
 import ChromePromise from 'chrome-promise/chrome-promise'; // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
