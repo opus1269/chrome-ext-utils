@@ -12,7 +12,6 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 import * as ChromeUtils from './utils.js';
- // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /**
  * Get an OAuth2.0 token

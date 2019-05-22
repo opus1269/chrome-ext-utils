@@ -15,7 +15,6 @@
  */
 import * as ChromeLocale from './locales.js';
 import * as ChromeStorage from './storage.js';
- // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /** True if development build */
 export const DEBUG = ChromeStorage.getBool('isDevelopmentBuild', false);

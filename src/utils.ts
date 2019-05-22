@@ -19,7 +19,9 @@
 import * as ChromeLocale from './locales.js';
 import * as ChromeStorage from './storage.js';
 
-import ChromePromise from 'chrome-promise/chrome-promise'; // removed in all build's - stupid typescript
+// removeIf(always)
+import ChromePromise from 'chrome-promise/chrome-promise';
+// endRemoveIf(always)
 const chromep = new ChromePromise();
 
 /** True if development build */

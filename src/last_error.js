@@ -10,7 +10,6 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
- // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /**
  * A custom error that can be persisted

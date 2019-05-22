@@ -13,7 +13,6 @@
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
 import * as ChromeGA from './analytics.js';
- // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /**
  * Chrome Messages

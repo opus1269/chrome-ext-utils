@@ -24,7 +24,7 @@
     "gulp": "^4.0.0",
     "gulp-eslint": "^4.0.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-replace": "^1.0.0",
+    "gulp-remove-code": "^3.0.4",
     "gulp-tslint": "^8.1.4",
     "gulp-typedoc": "^2.2.2",
     "gulp-typescript": "^5.0.1",

@@ -13,7 +13,6 @@
 import * as ChromeGA from './analytics.js';
 import * as ChromeJSON from './json.js';
 import * as ChromeMsg from './msg.js';
- // removed in all build's - stupid typescript
 const chromep = new ChromePromise();
 /**
  * Get a json parsed value from localStorage
