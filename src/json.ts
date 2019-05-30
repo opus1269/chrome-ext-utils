@@ -21,8 +21,8 @@ import * as ChromeGA from './analytics.js';
  * @param jsonString - string to parse
  * @returns json object, null on error
  */
-export function parse(jsonString: string) {
-  let ret = null;
+export function parse<T>(jsonString: string): null | T {
+  let ret: T | null = null;
   try {
     ret = JSON.parse(jsonString);
   } catch (err) {
@@ -37,7 +37,7 @@ export function parse(jsonString: string) {
  * @param jsonifiable - object to stringify
  * @returns string, null on error
  */
-export function stringify(jsonifiable: any) {
+export function stringify<T>(jsonifiable: T) {
   let ret = null;
   try {
     ret = JSON.stringify(jsonifiable);
@@ -51,13 +51,16 @@ export function stringify(jsonifiable: any) {
  * Create a shallow copy of an object
  *
  * @param jsonifiable - object to copy
- * @returns shallow copy of input, null on error
+ * @throws An error if copy failed
+ * @returns shallow copy of input
  */
-export function shallowCopy(jsonifiable: any) {
-  let ret = null;
+export function shallowCopy<T>(jsonifiable: T) {
   const jsonString = stringify(jsonifiable);
   if (jsonString !== null) {
-    ret = parse(jsonString);
+    return JSON.parse(jsonString) as T;
+  } else {
+    const msg = `Failed to copy: ${jsonifiable}`;
+    ChromeGA.error(msg, 'ChromeJSON.shallowCopy');
+    throw new Error(msg);
   }
-  return ret;
 }

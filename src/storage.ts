@@ -22,58 +22,27 @@ import ChromePromise from 'chrome-promise/chrome-promise';
 // endRemoveIf(always)
 const chromep = new ChromePromise();
 
+export function get<T>(key: string): null | T;
+export function get<T>(key: string, def: boolean): boolean;
+export function get<T>(key: string, def: number): number;
+export function get<T>(key: string, def: string): string;
+export function get<T>(key: string, def: T): T;
 /**
  * Get a json parsed value from localStorage
  *
  * @param key - key to get value for
- * @param def - optional default value if key not found
- * @returns json object or string, null if key does not exist
+ * @param def - optional value if key not found
+ * @returns json object or string, null if key does not exist and no default specified
  */
-export function get(key: string, def?: any) {
-  let value = null;
+export function get<T>(key: string, def?: T): null | T {
   const item = localStorage.getItem(key);
   if (item !== null) {
-    value = ChromeJSON.parse(item);
+    return ChromeJSON.parse<T>(item) as T;
   } else if (def !== undefined) {
-    value = def;
+    return def;
+  } else {
+    return null;
   }
-  return value;
-}
-
-/**
- * Get integer value from localStorage
- *
- * @param key - key to get value for
- * @param def - optional value to return, if key not found or value is NaN
- * @returns value as integer, NaN on error
- */
-export function getInt(key: string, def?: number) {
-  let value: number = Number.NaN;
-  const item = localStorage.getItem(key);
-  if (item != null) {
-    value = parseInt(item, 10);
-    if (Number.isNaN(value)) {
-      if (def !== undefined) {
-        value = def;
-      } else {
-        ChromeGA.error(`NaN value for: ${key} equals ${item}`, 'ChromeStorage.getInt');
-      }
-    }
-  } else if (def !== undefined) {
-    value = def;
-  }
-  return value;
-}
-
-/**
- * Get boolean value from localStorage
- *
- * @param key - key to get value for
- * @param def - optional value if key not found
- * @returns value as boolean, null if key does not exist
- */
-export function getBool(key: string, def?: boolean) {
-  return get(key, def);
 }
 
 /**
@@ -82,12 +51,14 @@ export function getBool(key: string, def?: boolean) {
  * @param key - key to set value for
  * @param value - new value, if null remove item
  */
-export function set(key: string, value: object | [] | string | number | boolean | null = null) {
+export function set<T>(key: string, value: null | T) {
   if (value === null) {
     localStorage.removeItem(key);
   } else {
-    const val = JSON.stringify(value);
-    localStorage.setItem(key, val);
+    const val = ChromeJSON.stringify<T>(value);
+    if (val !== null) {
+      localStorage.setItem(key, val);
+    }
   }
 }
 
@@ -99,20 +70,20 @@ export function set(key: string, value: object | [] | string | number | boolean 
  * @param keyBool - optional key to a boolean value that is true if the primary key has non-empty value
  * @returns true if value was set successfully
  */
-export function safeSet(key: string, value: any, keyBool?: string) {
+export function safeSet<T>(key: string, value: T, keyBool?: string) {
   let ret = true;
-  const oldValue = get(key);
+  const oldValue = get<T>(key);
   try {
     set(key, value);
-  } catch (e) {
+  } catch (err) {
     ret = false;
-    if (oldValue) {
+    if (oldValue !== null) {
       // revert to old value
       set(key, oldValue);
     }
     if (keyBool) {
       // revert to old value
-      if (oldValue && oldValue.length) {
+      if (oldValue !== null) {
         set(keyBool, true);
       } else {
         set(keyBool, false);
@@ -124,6 +95,11 @@ export function safeSet(key: string, value: any, keyBool?: string) {
   return ret;
 }
 
+export async function asyncGet<T>(key: string): Promise<null | T>;
+export async function asyncGet<T>(key: string, def: boolean): Promise<boolean>;
+export async function asyncGet<T>(key: string, def: number): Promise<number>;
+export async function asyncGet<T>(key: string, def: string): Promise<string>;
+export async function asyncGet<T>(key: string, def: T): Promise<T>;
 /**
  * Get a value from chrome.storage.local
  *
@@ -131,13 +107,13 @@ export function safeSet(key: string, value: any, keyBool?: string) {
  *
  * @param key - data key
  * @param def - optional default value if not found
- * @returns Object or Array from storage, def or null if not found
+ * @returns value from storage, null if not found unless default is provided
  */
-export async function asyncGet(key: string, def?: object | []) {
-  let value = null;
+export async function asyncGet<T>(key: string, def?: T): Promise<null | T> {
+  let value: null | T = null;
   try {
     const res = await chromep.storage.local.get([key]);
-    value = res[key];
+    value = res[key] as T;
   } catch (err) {
     ChromeGA.error(err.message, 'ChromeStorage.asyncGet');
     if (def !== undefined) {
@@ -165,7 +141,7 @@ export async function asyncGet(key: string, def?: object | []) {
  * @param keyBool - optional key to a boolean value that is true if the primary key has non-empty value
  * @returns true if value was set successfully
  */
-export async function asyncSet(key: string, value: object | [] | number, keyBool?: string) {
+export async function asyncSet<T>(key: string, value: T, keyBool?: string) {
   // TODO what about keyBool?
   let ret = true;
   const obj = {

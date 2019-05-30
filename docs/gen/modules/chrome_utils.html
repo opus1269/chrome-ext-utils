@@ -104,7 +104,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="chrome_utils.html#iswhitespace" class="tsd-kind-icon">is<wbr>White<wbr>Space</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="chrome_utils.html#iswindows" class="tsd-kind-icon">is<wbr>Windows</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="chrome_utils.html#noop" class="tsd-kind-icon">noop</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="chrome_utils.html#shufflearray" class="tsd-kind-icon">shuffle<wbr>Array</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="chrome_utils.html#shufflearray" class="tsd-kind-icon">shuffle<wbr>Array</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="chrome_utils.html#wait" class="tsd-kind-icon">wait</a></li>
 							</ul>
 						</section>
@@ -116,10 +116,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="debug" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> DEBUG</h3>
-					<div class="tsd-signature tsd-kind-icon">DEBUG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;ChromeStorage.getBool(&#x27;isDevelopmentBuild&#x27;, false)</span></div>
+					<div class="tsd-signature tsd-kind-icon">DEBUG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;ChromeStorage.get(&#x27;isDevelopmentBuild&#x27;, false)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L28">utils.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L28">utils.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,7 +134,7 @@
 					<div class="tsd-signature tsd-kind-icon">chromep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ChromePromise</span><span class="tsd-signature-symbol"> =&nbsp;new ChromePromise()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L25">utils.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L25">utils.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -151,7 +151,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L217">utils.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L196">utils.ts:196</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -160,7 +160,8 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>remarks</dt>
-									<dd><p>This will at least ensure the LAN is connected.
+									<dd><p>Throw an error if LAN is not connected</p>
+										<p>This will at least ensure the LAN is connected.
 										May get false positives for other errors.</p>
 									</dd>
 									<dt>throws</dt>
@@ -182,7 +183,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L54">utils.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L47">utils.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -206,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L34">utils.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L31">utils.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -215,7 +216,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>Extension name</p>
 						</li>
 					</ul>
 				</section>
@@ -229,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L65">utils.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L58">utils.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L75">utils.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L64">utils.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,7 +262,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>OS name</p>
 						</li>
 					</ul>
 				</section>
@@ -276,7 +275,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L184">utils.ts:184</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L161">utils.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -314,7 +313,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L173">utils.ts:173</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L150">utils.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -352,7 +351,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L156">utils.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L133">utils.ts:133</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -384,16 +383,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L43">utils.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L36">utils.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get the Extension version</p>
+									<p>Get the extension&#39;s version</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>Extension version</p>
 						</li>
 					</ul>
 				</section>
@@ -407,7 +405,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L124">utils.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L105">utils.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -416,7 +414,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>true if ChromeOS</p>
 						</li>
 					</ul>
 				</section>
@@ -430,16 +427,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L133">utils.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L110">utils.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Determine if we are a Mac</p>
+									<p>Determine if we are Mac</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>true if Mac</p>
 						</li>
 					</ul>
 				</section>
@@ -453,7 +449,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L239">utils.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L218">utils.ts:218</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -485,7 +481,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L146">utils.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L123">utils.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -517,7 +513,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L115">utils.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L100">utils.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -526,7 +522,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>true if MS Windows</p>
 						</li>
 					</ul>
 				</section>
@@ -540,7 +535,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L138">utils.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L115">utils.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -552,17 +547,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="shufflearray" class="tsd-anchor"></a>
 					<h3>shuffle<wbr>Array</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">shuffle<wbr>Array<span class="tsd-signature-symbol">(</span>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">shuffle<wbr>Array&lt;T&gt;<span class="tsd-signature-symbol">(</span>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L197">utils.ts:197</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L174">utils.ts:174</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -575,10 +570,16 @@
 									</dd>
 								</dl>
 							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>array: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>array: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Array to sort</p>
 									</div>
@@ -592,13 +593,13 @@
 					<a name="wait" class="tsd-anchor"></a>
 					<h3>wait</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">wait<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">wait<span class="tsd-signature-symbol">(</span>time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/1046b9b/src/utils.ts#L228">utils.ts:228</a></li>
+									<li>Defined in <a href="https://github.com/opus1269/chrome-ext-utils/blob/7cf35a2/src/utils.ts#L207">utils.ts:207</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -615,7 +616,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -718,7 +719,7 @@
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="chrome_utils.html#noop" class="tsd-kind-icon">noop</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="chrome_utils.html#shufflearray" class="tsd-kind-icon">shuffle<wbr>Array</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">

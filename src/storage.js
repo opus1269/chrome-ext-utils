@@ -18,55 +18,20 @@ const chromep = new ChromePromise();
  * Get a json parsed value from localStorage
  *
  * @param key - key to get value for
- * @param def - optional default value if key not found
- * @returns json object or string, null if key does not exist
+ * @param def - optional value if key not found
+ * @returns json object or string, null if key does not exist and no default specified
  */
 export function get(key, def) {
-    let value = null;
     const item = localStorage.getItem(key);
     if (item !== null) {
-        value = ChromeJSON.parse(item);
+        return ChromeJSON.parse(item);
     }
     else if (def !== undefined) {
-        value = def;
+        return def;
     }
-    return value;
-}
-/**
- * Get integer value from localStorage
- *
- * @param key - key to get value for
- * @param def - optional value to return, if key not found or value is NaN
- * @returns value as integer, NaN on error
- */
-export function getInt(key, def) {
-    let value = Number.NaN;
-    const item = localStorage.getItem(key);
-    if (item != null) {
-        value = parseInt(item, 10);
-        if (Number.isNaN(value)) {
-            if (def !== undefined) {
-                value = def;
-            }
-            else {
-                ChromeGA.error(`NaN value for: ${key} equals ${item}`, 'ChromeStorage.getInt');
-            }
-        }
+    else {
+        return null;
     }
-    else if (def !== undefined) {
-        value = def;
-    }
-    return value;
-}
-/**
- * Get boolean value from localStorage
- *
- * @param key - key to get value for
- * @param def - optional value if key not found
- * @returns value as boolean, null if key does not exist
- */
-export function getBool(key, def) {
-    return get(key, def);
 }
 /**
  * JSON stringify and save a value to localStorage
@@ -74,13 +39,15 @@ export function getBool(key, def) {
  * @param key - key to set value for
  * @param value - new value, if null remove item
  */
-export function set(key, value = null) {
+export function set(key, value) {
     if (value === null) {
         localStorage.removeItem(key);
     }
     else {
-        const val = JSON.stringify(value);
-        localStorage.setItem(key, val);
+        const val = ChromeJSON.stringify(value);
+        if (val !== null) {
+            localStorage.setItem(key, val);
+        }
     }
 }
 /**
@@ -97,15 +64,15 @@ export function safeSet(key, value, keyBool) {
     try {
         set(key, value);
     }
-    catch (e) {
+    catch (err) {
         ret = false;
-        if (oldValue) {
+        if (oldValue !== null) {
             // revert to old value
             set(key, oldValue);
         }
         if (keyBool) {
             // revert to old value
-            if (oldValue && oldValue.length) {
+            if (oldValue !== null) {
                 set(keyBool, true);
             }
             else {
@@ -124,7 +91,7 @@ export function safeSet(key, value, keyBool) {
  *
  * @param key - data key
  * @param def - optional default value if not found
- * @returns Object or Array from storage, def or null if not found
+ * @returns value from storage, null if not found unless default is provided
  */
 export async function asyncGet(key, def) {
     let value = null;

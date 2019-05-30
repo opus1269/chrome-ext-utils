@@ -47,13 +47,17 @@ export function stringify(jsonifiable) {
  * Create a shallow copy of an object
  *
  * @param jsonifiable - object to copy
- * @returns shallow copy of input, null on error
+ * @throws An error if copy failed
+ * @returns shallow copy of input
  */
 export function shallowCopy(jsonifiable) {
-    let ret = null;
     const jsonString = stringify(jsonifiable);
     if (jsonString !== null) {
-        ret = parse(jsonString);
+        return JSON.parse(jsonString);
     }
-    return ret;
+    else {
+        const msg = `Failed to copy: ${jsonifiable}`;
+        ChromeGA.error(msg, 'ChromeJSON.shallowCopy');
+        throw new Error(msg);
+    }
 }

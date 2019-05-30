@@ -17,19 +17,12 @@ import * as ChromeLocale from './locales.js';
 import * as ChromeStorage from './storage.js';
 const chromep = new ChromePromise();
 /** True if development build */
-export const DEBUG = ChromeStorage.getBool('isDevelopmentBuild', false);
-/** Get the extension's name
- *
- * @returns Extension name
- */
+export const DEBUG = ChromeStorage.get('isDevelopmentBuild', false);
+/** Get the extension's name */
 export function getExtensionName() {
     return `chrome-extension://${chrome.runtime.id}`;
 }
-/**
- * Get the Extension version
- *
- * @returns Extension version
- */
+/** Get the extension's version */
 export function getVersion() {
     const manifest = chrome.runtime.getManifest();
     return manifest.version;
@@ -54,11 +47,7 @@ export function getFullChromeVersion() {
     const raw = navigator.userAgent;
     return raw ? raw : 'Unknown';
 }
-/**
- * Get the OS as a human readable string
- *
- * @returns OS name
- */
+/** Get the OS as a human readable string */
 export async function getPlatformOS() {
     let output = 'Unknown';
     try {
@@ -87,32 +76,20 @@ export async function getPlatformOS() {
                 break;
         }
     }
-    catch (e) {
+    catch (err) {
         // something went wrong - linux seems to fail this call sometimes
     }
     return output;
 }
-/**
- * Determine if we are MS windows
- *
- * @returns true if MS Windows
- */
+/** Determine if we are MS windows */
 export function isWindows() {
     return isOS('win');
 }
-/**
- * Determine if we are Chrome OS
- *
- * @returns true if ChromeOS
- */
+/** Determine if we are Chrome OS */
 export function isChromeOS() {
     return isOS('cros');
 }
-/**
- * Determine if we are a Mac
- *
- * @returns true if Mac
- */
+/** Determine if we are Mac */
 export function isMac() {
     return isOS('mac');
 }
@@ -185,6 +162,8 @@ export function shuffleArray(array) {
  *
  * @remarks
  *
+ * Throw an error if LAN is not connected
+ *
  * This will at least ensure the LAN is connected.
  * May get false positives for other errors.
  *
@@ -202,7 +181,7 @@ export function checkNetworkConnection() {
  */
 export async function wait(time) {
     const waiter = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    return await waiter(time);
+    await waiter(time);
 }
 /**
  * Determine if we are a given operating system
@@ -215,7 +194,7 @@ async function isOS(os) {
         const info = await chromep.runtime.getPlatformInfo();
         return (info.os === os);
     }
-    catch (e) {
+    catch (err) {
         // something went wrong - linux seems to fail this call sometimes
         return false;
     }

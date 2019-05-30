@@ -10,7 +10,6 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * https://github.com/opus1269/chrome-ext-utils/blob/master/LICENSE
  */
-import * as ChromeJSON from './json.js';
 import * as ChromeUtils from './utils.js';
 /** Event types */
 export const EVENT = {
@@ -180,22 +179,22 @@ export function page(url) {
 /**
  * Send an event
  *
- * @param theEvent - the event type
+ * @param ev - the event type
  * @param label - override label
  * @param action - override action
  */
-export function event(theEvent, label, action) {
-    if (theEvent) {
-        const ev = ChromeJSON.shallowCopy(theEvent);
-        ev.hitType = 'event';
-        ev.eventLabel = label ? label : ev.eventLabel;
-        ev.eventAction = action ? action : ev.eventAction;
-        if (!ChromeUtils.DEBUG) {
-            ga('send', ev);
-        }
-        else {
-            console.log(ev); // tslint:disable-line no-console
-        }
+export function event(ev, label, action) {
+    const theEvent = {
+        hitType: 'event',
+        eventCategory: ev.eventCategory,
+        eventAction: action ? action : ev.eventAction,
+        eventLabel: label ? label : ev.eventLabel,
+    };
+    if (!ChromeUtils.DEBUG) {
+        ga('send', theEvent);
+    }
+    else {
+        console.log(theEvent); // tslint:disable-line no-console
     }
 }
 /**
