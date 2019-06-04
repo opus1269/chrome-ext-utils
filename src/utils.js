@@ -82,16 +82,16 @@ export async function getPlatformOS() {
     return output;
 }
 /** Determine if we are MS windows */
-export function isWindows() {
-    return isOS('win');
+export async function isWindows() {
+    return await isOS('win');
 }
 /** Determine if we are Chrome OS */
-export function isChromeOS() {
-    return isOS('cros');
+export async function isChromeOS() {
+    return await isOS('cros');
 }
 /** Determine if we are Mac */
-export function isMac() {
-    return isOS('mac');
+export async function isMac() {
+    return await isOS('mac');
 }
 /** No operation */
 export function noop() { }
